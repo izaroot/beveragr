@@ -13,7 +13,8 @@ import {
 export default class App extends Component{
   state={
     beverages: [],
-    user: {}
+    user: {},
+    ingredients: []
   }
 
   componentDidMount(){
@@ -22,6 +23,13 @@ export default class App extends Component{
     .then(beverages => {
       this.setState({
         beverages
+      })
+    })
+    fetch('http://localhost:3000/ingredients')
+    .then(resp => resp.json())
+    .then(ingredients => {
+      this.setState({
+        ingredients
       })
     })
   }
@@ -62,7 +70,7 @@ export default class App extends Component{
         <Navbar user={this.state.user} login={this.handleLogin} logout={this.handleLogout} newUser={this.handeNewUserLogin} />
         <Switch>
           <Route path="/createbev">
-            <CreateBeverage />
+            <CreateBeverage ingredients={this.state.ingredients}/>
           </Route>
           <Route exact path="/" >
             <BeveragesContainer beverages={this.state.beverages} />
