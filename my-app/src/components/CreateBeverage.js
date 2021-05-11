@@ -31,13 +31,26 @@ export default class CreateBeverage extends Component{
     setCreamer = (creamer)=>{
         this.setState({
             creamer
-        })
+        },() => {this.veganChecker()})
     }
-
+    
     setAddins = (addins)=>{
         if (!this.state.addins.some(element => element === addins)){
             this.setState({
                 addins: [...this.state.addins, addins]
+            },() => {this.veganChecker()})
+        }
+    }
+    veganChecker = () => {
+        let array = [this.state.base, this.state.creamer, ...this.state.addins]
+        let ingredientsObj = this.props.ingredients.filter(ingredient => array.includes(ingredient.name))
+        if(ingredientsObj.some(ingredient => !ingredient.vegan)){
+            this.setState({
+                vegan: false
+            })
+        }else{
+            this.setState({
+                vegan:true
             })
         }
     }
@@ -46,8 +59,6 @@ export default class CreateBeverage extends Component{
         let base = this.props.ingredients.filter(ingredient => ingredient.type === 'coffee' || ingredient.type === 'tea' )
         let creamer = this.props.ingredients.filter(ingredient => ingredient.type === 'cream')
         let addins = this.props.ingredients.filter(ingredient => ingredient.type === 'addin')
-
-        console.log(base)
         return(
            <Router>
                <Switch>
@@ -55,13 +66,13 @@ export default class CreateBeverage extends Component{
                         <BeverageBase base={base} setBase={this.setBase} />
                     </Route>
                     <Route exact path="/createbev/creamer" >
-                        <Creamer creamer={creamer} setCreamer={this.setCreamer} />
+                        <Creamer creamer={creamer} setCreamer={this.setCreamer} veganChecker={this.veganChecker} />
                     </Route>
                     <Route exact path="/createbev/addins" >
                         <Addin addins={addins} setAddins={this.setAddins} />
                     </Route>
                     <Route exact path="/createbev/review" >
-                        <BeverageReview />
+                        <BeverageReview beverageCurrent={this.state} />
                     </Route>
                </Switch>
            </Router>
