@@ -31,11 +31,11 @@ export default class App extends Component{
       <Router>
         <Navbar user={this.state.user} />
         <Switch>
-          <Route exact path="/" >
-              <BeveragesContainer beverages={this.state.beverages} />
-          </Route>
           <Route path="/createbev">
-              <CreateBeverage />
+            <CreateBeverage />
+          </Route>
+          <Route exact path="/" >
+            <BeveragesContainer beverages={this.state.beverages} />
           </Route>
           <Route>
             <div>404 No matching URL</div>

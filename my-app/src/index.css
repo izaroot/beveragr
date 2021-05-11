@@ -11,6 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-div .navbar{
+div .ui.segment.navbar{
   background-color: #6f4e37 ;
 }

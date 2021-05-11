@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Segment, Label} from 'semantic-ui-react'
+import React, {Component, Fragment} from 'react'
+import {Segment, Label, Form} from 'semantic-ui-react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,8 +9,35 @@ import {
 
 export default class Navbar extends Component{
 
+    state = {
+        loginDisplay: false,
+        registerDisplay: false
+    }
+
+
 
     render(){
+        let welcome
+        if (this.props.user.name){
+            welcome = <Label as='a' image>{this.props.user.name}</Label>
+        }else{
+            if (!this.state.loginDisplay && !this.state.registerDisplay){
+                welcome = (<Fragment><button>Login</button> <button>Register</button></Fragment>)
+            }else if (this.state.loginDisplay){
+                welcome =
+                <Form>
+                    <input type="text" name='login' placeholder='Username' />
+                    <input type="submit" value='Login' />
+                </Form>
+            } else if (this.state.registerDisplay){
+                welcome =                 
+                <Form>
+                    <input type="text" name='register'placeholder='New User' />
+                    <input type="submit" value='Register' />
+                </Form>
+            }
+        }
+
         return(
             <div>
             <Segment className="navbar">
@@ -25,9 +52,7 @@ export default class Navbar extends Component{
                 <Link to="/ambience">Ambience</Link>
                 </li>
             </ul>
-            <div>
-                {this.props.user.name ? <Label as='a' image></Label> : <button>Login</button> }
-            </div>
+            {welcome}
             </Segment>
             </div>
         )

@@ -16,7 +16,7 @@ export default class CreateBeverage extends Component{
            <Router>
                <Switch>
                     <Route exact path="/createbev/base">
-                            <BeverageBase />
+                        <BeverageBase />
                     </Route>
                     <Route exact path="/createbev/creamer" >
                         <Creamer />
