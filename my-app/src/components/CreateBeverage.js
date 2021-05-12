@@ -19,7 +19,7 @@ export default class CreateBeverage extends Component{
         creamer: '',
         addins: [],
         iced: false,
-        vegan: false,
+        vegan: true,
         description: '',
     }
 
@@ -33,14 +33,14 @@ export default class CreateBeverage extends Component{
 
     setCreamer = (creamer)=>{
         this.setState({
-            creamer
+            creamer: creamer.name
         },() => {this.veganChecker()})
     }
     
     setAddins = (addins)=>{
         if (!this.state.addins.some(element => element === addins)){
             this.setState({
-                addins: [...this.state.addins, addins]
+                addins: [...this.state.addins, addins.name]
             },() => {this.veganChecker()})
         }
     }
@@ -87,7 +87,7 @@ export default class CreateBeverage extends Component{
                 creamer: '',
                 addins: [],
                 iced: false,
-                vegan: false,
+                vegan: true,
                 description: '',
             })
         })
@@ -103,13 +103,13 @@ export default class CreateBeverage extends Component{
                 <Router>
                     <Switch>
                             <Route exact path="/createbev/base">
-                                <BeverageBase base={base} setBase={this.setBase} />
+                                <BeverageBase base={base} setBase={this.setBase} beverageCurrent={this.state} />
                             </Route>
                             <Route exact path="/createbev/creamer" >
-                                <Creamer creamer={creamer} setCreamer={this.setCreamer} veganChecker={this.veganChecker} />
+                                <Creamer creamer={creamer} setCreamer={this.setCreamer} beverageCurrent={this.state}/>
                             </Route>
                             <Route exact path="/createbev/addins" >
-                                <Addin addins={addins} setAddins={this.setAddins} />
+                                <Addin addins={addins} setAddins={this.setAddins} beverageCurrent={this.state}/>
                             </Route>
                             <Route exact path="/createbev/review" >
                                 <BeverageReview beverageCurrent={this.state} setName={this.setName} setDescription={this.setDescription} handleSubmit={this.handleSubmit} />

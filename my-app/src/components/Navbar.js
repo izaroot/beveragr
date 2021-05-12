@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {Label, Form, Button} from 'semantic-ui-react'
 import {
+    NavLink,
     BrowserRouter as Router,
     Switch,
     Route,
@@ -94,21 +95,10 @@ export default class Navbar extends Component{
                 <div className="ui container grid">
                     <div className="computer only row">
                         <a class="header item">Beverager</a>
-                        <Link to="/"><a class="item">Home</a></Link>
-                        <Link to="/createbev/base"><a class="item">Create</a></Link>
-                        <Link to="/ambience"><a class="item">Ambience</a></Link>
+                        <NavLink to="/" activeClassName="active"><a class="item">Home</a></NavLink>
+                        <NavLink to="/createbev/base" activeClassName="active"><a class="item">Create</a></NavLink>
+                        <NavLink to="/ambience" activeClassName="active"><a class="item">Ambience</a></NavLink>
                     </div>                    
-                    {/* <ul>
-                        <li>
-                        <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                        <Link to="/createbev/base">Create</Link>
-                        </li>
-                        <li>
-                        <Link to="/ambience">Ambience</Link>
-                        </li>
-                    </ul> */}
                 </div>
                 {welcome}       
             </div>

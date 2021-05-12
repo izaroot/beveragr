@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 import IngredientCard from './IngredientCard'
+import { Button } from 'semantic-ui-react'; 
 import press from '../assets/press.png'
 import teabag from '../assets/teabag.png'
 
@@ -35,17 +36,13 @@ export default class BeverageBase extends Component{
 
             </div>
             <div className="ui grid cards centered columns">
-                {/* <button onClick={()=> this.handleDisplay('coffee')} >Coffee</button>
-                <button onClick={()=> this.handleDisplay('tea')} >Tea</button> */}
-                <br/>
-                {this.state.display === 'coffee' ? coffees.map(coffee => <IngredientCard ingredient={coffee} />):null}
-                {this.state.display === 'tea' ? teas.map(tea => <IngredientCard ingredient={tea} />):null}
-
-                {/* {this.state.display === 'coffee' ? coffees.map(coffee => <div onClick={()=> {this.props.setBase(coffee)} >{coffee.name}</div>) : null} */}
-                {/* {this.state.display === 'tea' ? teas.map(tea => <div onClick={()=> {this.props.setBase(tea)} >{tea.name}</div>) : null} */}
-                <Link to="/createbev/creamer">Next</Link>
+                {this.state.display === 'coffee' ? coffees.map(coffee => <IngredientCard ingredient={coffee} setIngredient={this.props.setBase} />):null}
+                {this.state.display === 'tea' ? teas.map(tea => <IngredientCard ingredient={tea} setIngredient={this.props.setBase} />):null}
             </div>
-           </div>
+            <div className="ui grid cards centered columns">
+                <Link to={this.props.beverageCurrent.base.length > 0 ? '/createbev/creamer' : '#'}><Button disabled={this.props.beverageCurrent.base.length > 0 ? false : true}>Next</Button></Link>
+            </div>
+        </div>
         )
     }
 }
