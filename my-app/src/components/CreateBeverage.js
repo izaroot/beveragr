@@ -25,15 +25,11 @@ export default class CreateBeverage extends Component{
 
     setBase = (base)=>{
         this.setState({
-            base
+            base: base.name,
+            baseType: base.type
         })
     }
 
-    setBaseType = (baseType)=>{
-        this.setState({
-            baseType
-        })
-    }
 
     setCreamer = (creamer)=>{
         this.setState({
@@ -103,22 +99,24 @@ export default class CreateBeverage extends Component{
         let creamer = this.props.ingredients.filter(ingredient => ingredient.type === 'cream')
         let addins = this.props.ingredients.filter(ingredient => ingredient.type === 'addin')
         return(
-           <Router>
-               <Switch>
-                    <Route exact path="/createbev/base">
-                        <BeverageBase base={base} setBaseType={this.setBaseType} setBase={this.setBase} />
-                    </Route>
-                    <Route exact path="/createbev/creamer" >
-                        <Creamer creamer={creamer} setCreamer={this.setCreamer} veganChecker={this.veganChecker} />
-                    </Route>
-                    <Route exact path="/createbev/addins" >
-                        <Addin addins={addins} setAddins={this.setAddins} />
-                    </Route>
-                    <Route exact path="/createbev/review" >
-                        <BeverageReview beverageCurrent={this.state} setName={this.setName} setDescription={this.setDescription} handleSubmit={this.handleSubmit} />
-                    </Route>
-               </Switch>
-           </Router>
+            // <div className="ui grid cards centered columns" >
+                <Router>
+                    <Switch>
+                            <Route exact path="/createbev/base">
+                                <BeverageBase base={base} setBase={this.setBase} />
+                            </Route>
+                            <Route exact path="/createbev/creamer" >
+                                <Creamer creamer={creamer} setCreamer={this.setCreamer} veganChecker={this.veganChecker} />
+                            </Route>
+                            <Route exact path="/createbev/addins" >
+                                <Addin addins={addins} setAddins={this.setAddins} />
+                            </Route>
+                            <Route exact path="/createbev/review" >
+                                <BeverageReview beverageCurrent={this.state} setName={this.setName} setDescription={this.setDescription} handleSubmit={this.handleSubmit} />
+                            </Route>
+                    </Switch>
+                </Router>
+        //    </div>
         )
     }
 }

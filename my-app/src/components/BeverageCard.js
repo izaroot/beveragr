@@ -12,8 +12,8 @@ export default class BeverageCard extends Component{
     render(){
         return(
             
-                <div className="ui item" style={{width: "20%"}}>
-                    <div class="ui small image">
+                <div className="ui card">
+                    <div className="ui small centered image">
                             <img src={imageMap[`${this.props.beverage.baseType}`]}/>
                     </div>
                     <div className="content">
