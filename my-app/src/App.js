@@ -64,13 +64,19 @@ export default class App extends Component{
     })
   }
 
+  handleNewBeverage = (newBeverage) => {
+    this.setState({
+      beverages: [...this.state.beverages, newBeverage]
+    })
+  }
+
   render(){
     return(
       <Router>
         <Navbar user={this.state.user} login={this.handleLogin} logout={this.handleLogout} newUser={this.handeNewUserLogin} />
         <Switch>
           <Route path="/createbev">
-            <CreateBeverage ingredients={this.state.ingredients}/>
+            <CreateBeverage ingredients={this.state.ingredients} handleNewBeverage={this.handleNewBeverage} />
           </Route>
           <Route exact path="/" >
             <BeveragesContainer beverages={this.state.beverages} />

@@ -6,9 +6,9 @@ export default class BeveragesContainer extends Component{
 
     render(){
         return(
-            <Fragment>
+            <div className="ui items grid centered columns four">
                {this.props.beverages.map(beverage => <BeverageCard beverage={beverage}/> )}
-            </Fragment>
+            </div>
         )
     }
 }

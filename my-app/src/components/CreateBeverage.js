@@ -14,6 +14,7 @@ export default class CreateBeverage extends Component{
 
     state = {
         name: '',
+        baseType: '',
         base: '',
         creamer: '',
         addins: [],
@@ -25,6 +26,12 @@ export default class CreateBeverage extends Component{
     setBase = (base)=>{
         this.setState({
             base
+        })
+    }
+
+    setBaseType = (baseType)=>{
+        this.setState({
+            baseType
         })
     }
 
@@ -76,7 +83,8 @@ export default class CreateBeverage extends Component{
             body: JSON.stringify(this.state)
         })
         .then(res => res.json())
-        .then( newBeverage => {
+        .then(newBeverage => {
+            this.props.handleNewBeverage(newBeverage)
             this.setState({
                 name: '',
                 base: '',
@@ -85,7 +93,8 @@ export default class CreateBeverage extends Component{
                 iced: false,
                 vegan: false,
                 description: '',
-        })})
+            })
+        })
         
     }
 
@@ -97,7 +106,7 @@ export default class CreateBeverage extends Component{
            <Router>
                <Switch>
                     <Route exact path="/createbev/base">
-                        <BeverageBase base={base} setBase={this.setBase} />
+                        <BeverageBase base={base} setBaseType={this.setBaseType} setBase={this.setBase} />
                     </Route>
                     <Route exact path="/createbev/creamer" >
                         <Creamer creamer={creamer} setCreamer={this.setCreamer} veganChecker={this.veganChecker} />

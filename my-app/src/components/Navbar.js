@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react'
-import {Segment, Label, Form, Button} from 'semantic-ui-react'
+import {Label, Form, Button} from 'semantic-ui-react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -89,22 +89,30 @@ export default class Navbar extends Component{
         }
 
         return(
-            <div>
-            <Segment className="navbar">
-            <ul>
-                <li>
-                <Link to="/">Home</Link>
-                </li>
-                <li>
-                <Link to="/createbev/base">Create</Link>
-                </li>
-                <li>
-                <Link to="/ambience">Ambience</Link>
-                </li>
-            </ul>
-            {welcome}
-            </Segment>
+            
+            <div className="ui huge menu navbar">
+                <div className="ui container grid">
+                    <div className="computer only row">
+                        <a class="header item">Beverager</a>
+                        <Link to="/"><a class="item">Home</a></Link>
+                        <Link to="/createbev/base"><a class="item">Create</a></Link>
+                        <Link to="/ambience"><a class="item">Ambience</a></Link>
+                    </div>                    
+                    {/* <ul>
+                        <li>
+                        <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                        <Link to="/createbev/base">Create</Link>
+                        </li>
+                        <li>
+                        <Link to="/ambience">Ambience</Link>
+                        </li>
+                    </ul> */}
+                </div>
+                {welcome}       
             </div>
+          
         )
     }
 }
