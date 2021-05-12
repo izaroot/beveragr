@@ -55,6 +55,40 @@ export default class CreateBeverage extends Component{
         }
     }
 
+    setName = (e) => {
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    setDescription = (e) => {
+        this.setState({
+            description: e.target.value
+        })
+    }
+
+    handleSubmit = ()=>{
+        fetch('http://localhost:3000/beverages', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(res => res.json())
+        .then( newBeverage => {
+            this.setState({
+                name: '',
+                base: '',
+                creamer: '',
+                addins: [],
+                iced: false,
+                vegan: false,
+                description: '',
+        })})
+        
+    }
+
     render(){
         let base = this.props.ingredients.filter(ingredient => ingredient.type === 'coffee' || ingredient.type === 'tea' )
         let creamer = this.props.ingredients.filter(ingredient => ingredient.type === 'cream')
@@ -72,7 +106,7 @@ export default class CreateBeverage extends Component{
                         <Addin addins={addins} setAddins={this.setAddins} />
                     </Route>
                     <Route exact path="/createbev/review" >
-                        <BeverageReview beverageCurrent={this.state} />
+                        <BeverageReview beverageCurrent={this.state} setName={this.setName} setDescription={this.setDescription} handleSubmit={this.handleSubmit} />
                     </Route>
                </Switch>
            </Router>
