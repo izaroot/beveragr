@@ -5,6 +5,8 @@ import hot from '../assets/hot.svg'
 import notHot from '../assets/not_hot.svg'
 import vegan from '../assets/vegan.svg'
 import notVegan from '../assets/not_vegan.svg'
+import onStar from '../assets/on_star.svg'
+import offStar from '../assets/off_star.svg'
 
 export default class FilterSortSearch extends Component{
 
@@ -19,6 +21,9 @@ export default class FilterSortSearch extends Component{
                 <img className="ui image tiny" src={this.props.filterState.icedFilter ? icecube : notIced} onClick={this.props.handleIcedFilter} />
                 <img className="ui image tiny" src={this.props.filterState.hotFilter ? hot : notHot} onClick={this.props.handleHotFilter} />
                 <img className="ui image tiny" src={this.props.filterState.veganFilter ? vegan : notVegan} onClick={this.props.handleVeganFilter} />
+                {this.props.favorites ? <img className="ui image tiny" src={this.props.filterState.favoriteFilter ? onStar : offStar} 
+                onClick={this.props.handleFavFilter} /> : null
+                }
             </div>
         )
     }

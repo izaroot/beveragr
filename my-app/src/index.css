@@ -18,3 +18,20 @@ div.ui.navbar{
   background-color: pink;
 } */
 
+.ambience{
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
+#myVideo {
+  width: 70%;
+}
+.favorite{
+  width: 10%;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}

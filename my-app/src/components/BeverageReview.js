@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
-import {TextArea, Label, Form, Button} from 'semantic-ui-react'
+import {TextArea, Form, Button} from 'semantic-ui-react'
 
 
 export default class Creamer extends Component{

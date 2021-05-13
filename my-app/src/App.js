@@ -6,8 +6,7 @@ import Ambience from './components/Ambience'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -34,6 +33,44 @@ export default class App extends Component{
       })
     })
   }
+
+  handleFavButton = (id) => {
+    if(!this.state.user.favorites.some(element => element === id)){
+      fetch(`http://localhost:3000/users/${this.state.user.id}`,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          favorites: [...this.state.user.favorites, id]
+        })
+      })
+      .then(resp => resp.json())
+      .then(updatedUser => {
+        this.setState({
+          user: updatedUser
+        })
+      })
+    }else{
+      let newFavorites = [...this.state.user.favorites]
+      fetch(`http://localhost:3000/users/${this.state.user.id}`,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          favorites: newFavorites.filter(element => element !== id)
+        })
+      })
+      .then(resp => resp.json())
+      .then(updatedUser => {
+        this.setState({
+          user: updatedUser
+        })
+      })
+    }
+  }
+
 
   handleLogin = (event, username) => {
       event.preventDefault()
@@ -80,7 +117,7 @@ export default class App extends Component{
             <CreateBeverage ingredients={this.state.ingredients} handleNewBeverage={this.handleNewBeverage} />
           </Route>
           <Route exact path="/" >
-            <BeveragesContainer beverages={this.state.beverages} />
+            <BeveragesContainer beverages={this.state.beverages} user={this.state.user} handleFavButton={this.handleFavButton} />
           </Route>
           <Route exact path="/ambience">
             <Ambience />

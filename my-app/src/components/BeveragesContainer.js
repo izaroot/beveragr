@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import FilterSortSearch from './FilterSortSearch'
 import BeverageCard from './BeverageCard'
 
@@ -8,7 +8,8 @@ export default class BeveragesContainer extends Component{
         filterText: "",
         icedFilter: false,
         hotFilter: false,
-        veganFilter: false
+        veganFilter: false,
+        favoriteFilter: false
     }
 
     handleFilter = (event) => {
@@ -36,18 +37,24 @@ export default class BeveragesContainer extends Component{
             veganFilter: !this.state.veganFilter
         })
     }
-    // (beverage => this.state.filterText.includes(beverage.baseType))
+
+    handleFavFilter = () => {
+        this.setState({
+            favoriteFilter: !this.state.favoriteFilter
+        })
+    }
+
     render(){
         const typeFilter = this.props.beverages.filter(beverage => beverage.baseType.includes(this.state.filterText))
         const icedFilter = typeFilter.filter(beverage => this.state.icedFilter ? beverage.iced === this.state.icedFilter : beverage)
-        const hotFilter = icedFilter.filter(beverage => this.state.hotFilter ? beverage.iced === this.state.icedFilter : beverage)
+        const hotFilter = icedFilter.filter(beverage => this.state.hotFilter ? beverage.iced !== this.state.hotFilter : beverage)
         const veganFilter = hotFilter.filter(beverage => this.state.veganFilter ? beverage.vegan === this.state.veganFilter : beverage)
-        console.log(hotFilter)
+        const favFilter = this.state.favoriteFilter ?  veganFilter.filter(beverage => this.props.user.favorites.includes(beverage.id) ) : veganFilter
         return(
             <div>
-                <FilterSortSearch handleFilter={this.handleFilter} filterState={this.state} handleHotFilter={this.handleHotFilter} handleIcedFilter={this.handleIcedFilter} handleVeganFilter={this.handleVeganFilter} />            
+                <FilterSortSearch favorites={this.props.user.favorites} handleFavFilter={this.handleFavFilter} handleFilter={this.handleFilter} filterState={this.state} handleHotFilter={this.handleHotFilter} handleIcedFilter={this.handleIcedFilter} handleVeganFilter={this.handleVeganFilter} />            
                 <div className="ui grid cards centered columns three">
-                {veganFilter.map(beverage => <BeverageCard beverage={beverage}/> )}
+                {favFilter.map(beverage => <BeverageCard beverage={beverage} favorites={this.props.user.favorites} handleFavButton={this.props.handleFavButton} /> )}
                 </div>
             </div>
         )

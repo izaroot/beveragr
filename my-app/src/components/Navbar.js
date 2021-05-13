@@ -94,10 +94,10 @@ export default class Navbar extends Component{
             <div className="ui huge menu navbar">
                 <div className="ui container grid">
                     <div className="computer only row">
-                        <a class="header item">Beverager</a>
-                        <NavLink to="/" activeClassName="active"><a class="item">Home</a></NavLink>
-                        <NavLink to="/createbev/base" activeClassName="active"><a class="item">Create</a></NavLink>
-                        <NavLink to="/ambience" activeClassName="active"><a class="item">Ambience</a></NavLink>
+                        <a className="header item">Beverager</a>
+                        <NavLink to="/" activeClassName="active"><a className="item">Home</a></NavLink>
+                        <NavLink to="/createbev/base" activeClassName="active"><a className="item">Create</a></NavLink>
+                        <NavLink to="/ambience" activeClassName="active"><a className="item">Ambience</a></NavLink>
                     </div>                    
                 </div>
                 {welcome}       
