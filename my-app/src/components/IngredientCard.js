@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import veganPic from '../assets/vegan.jpg'
+import veganPic from '../assets/vegan.svg'
 
 
 export default class IngredientCard extends Component{

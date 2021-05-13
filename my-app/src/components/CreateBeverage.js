@@ -30,6 +30,12 @@ export default class CreateBeverage extends Component{
         })
     }
 
+    setIced = () => {
+        this.setState({
+            iced: !this.state.iced
+        })
+    }
+
 
     setCreamer = (creamer)=>{
         this.setState({
@@ -56,7 +62,7 @@ export default class CreateBeverage extends Component{
                 vegan:true
             })
         }
-    }
+    }   
 
     setName = (e) => {
         this.setState({
@@ -103,7 +109,7 @@ export default class CreateBeverage extends Component{
                 <Router>
                     <Switch>
                             <Route exact path="/createbev/base">
-                                <BeverageBase base={base} setBase={this.setBase} beverageCurrent={this.state} />
+                                <BeverageBase base={base} setBase={this.setBase} beverageCurrent={this.state} setIced={this.setIced}/>
                             </Route>
                             <Route exact path="/createbev/creamer" >
                                 <Creamer creamer={creamer} setCreamer={this.setCreamer} beverageCurrent={this.state}/>

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Navbar from './components/Navbar'
 import BeveragesContainer from './components/BeveragesContainer'
 import CreateBeverage from './components/CreateBeverage'
+import Ambience from './components/Ambience'
 import {
   BrowserRouter as Router,
   Switch,
@@ -80,6 +81,9 @@ export default class App extends Component{
           </Route>
           <Route exact path="/" >
             <BeveragesContainer beverages={this.state.beverages} />
+          </Route>
+          <Route exact path="/ambience">
+            <Ambience />
           </Route>
           <Route>
             <div>404 No matching URL</div>
