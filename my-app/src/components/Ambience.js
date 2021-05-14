@@ -6,7 +6,6 @@ import stormFireSound from '../audio/storm_fire.wav'
 import breezeChimesSound from '../audio/breeze_chimes.wav'
 import windWaveSound from '../audio/wind_wave.wav'
 import summerNightSound from '../audio/summer_night.wav'
-import rainCafe from '../video/cafe_rain.mp4'
 
 
 const coffeeFire = new Howl({src: coffeeFireSound, loop: true})
@@ -81,9 +80,6 @@ export default class Ambience extends Component{
                     
                     
                 </div>
-                {/* <video id="myVideo" autoplay="autoplay" muted="muted" loop >
-                    <source src={rainCafe} type="video/mp4" />
-                </video> */}
             </div>
             
         )

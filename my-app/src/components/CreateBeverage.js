@@ -44,7 +44,7 @@ export default class CreateBeverage extends Component{
     }
     
     setAddins = (addins)=>{
-        if (!this.state.addins.some(element => element === addins)){
+        if (!this.state.addins.some(element => element === addins.name)){
             this.setState({
                 addins: [...this.state.addins, addins.name]
             },() => {this.veganChecker()})
@@ -96,6 +96,11 @@ export default class CreateBeverage extends Component{
                 vegan: true,
                 description: '',
             })
+            const newState ={
+                path: "/"
+            }
+            window.history.pushState(newState, "home page", "/")
+            window.location.reload()
         })
         
     }

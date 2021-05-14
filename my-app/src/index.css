@@ -35,3 +35,16 @@ div.ui.navbar{
   left: 10px;
   top: 10px;
 }
+.bevstate{
+  font-weight: 400;
+  position: fixed;
+  top:20%;
+  left:5%;
+  border: none;
+  border-radius: .28571429rem;
+  padding: 10px 5px;
+  background-color: white;
+  width: 150px;
+  overflow-wrap: normal;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5
+}

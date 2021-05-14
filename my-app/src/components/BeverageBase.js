@@ -37,9 +37,8 @@ export default class BeverageBase extends Component{
                     <img alt="" src={this.props.beverageCurrent.iced ? icedtea : teabag}></img><br/>
                     <span className='ui large header'>Tea</span>
                 </div>
-
             </div>
-            <div className="ui grid cards centered columns">
+            <div className="ui grid cards centered four columns">
                 {this.state.display === 'coffee' ? coffees.map(coffee => <IngredientCard ingredient={coffee} setIngredient={this.props.setBase} />):null}
                 {this.state.display === 'tea' ? teas.map(tea => <IngredientCard ingredient={tea} setIngredient={this.props.setBase} />):null}
             </div>
@@ -47,6 +46,18 @@ export default class BeverageBase extends Component{
                 <img alt="" className="ui image tiny" src={this.props.beverageCurrent.iced ? icecube : notIced} onClick={this.props.setIced} />
                 <Link to={this.props.beverageCurrent.base.length > 0 ? '/createbev/creamer' : '#'}><Button disabled={this.props.beverageCurrent.base.length > 0 ? false : true}>Next</Button></Link>
             </div>
+            {this.props.beverageCurrent.baseType !== "" ? 
+            <div className="ui left bevstate">
+                <ul>
+                    <li>{this.props.beverageCurrent.iced ? "Iced" : null} {this.props.beverageCurrent.base}</li>
+                    {this.props.beverageCurrent.creamer !== "" ? <li>{this.props.beverageCurrent.creamer}</li> : null}
+                    {this.props.beverageCurrent.addins.length > 0 ? this.props.beverageCurrent.addins.map(addin => <li>{addin}</li>) : null}
+                    {this.props.beverageCurrent.vegan ? <li>Vegan</li> : null}
+                </ul>
+                
+            </div> : null}
+            
+            
         </div>
         )
     }

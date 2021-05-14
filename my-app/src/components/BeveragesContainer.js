@@ -53,7 +53,7 @@ export default class BeveragesContainer extends Component{
         return(
             <div>
                 <FilterSortSearch favorites={this.props.user.favorites} handleFavFilter={this.handleFavFilter} handleFilter={this.handleFilter} filterState={this.state} handleHotFilter={this.handleHotFilter} handleIcedFilter={this.handleIcedFilter} handleVeganFilter={this.handleVeganFilter} />            
-                <div className="ui grid cards centered columns three">
+                <div className="ui grid cards centered columns">
                 {favFilter.map(beverage => <BeverageCard beverage={beverage} favorites={this.props.user.favorites} handleFavButton={this.props.handleFavButton} /> )}
                 </div>
             </div>
