@@ -112,16 +112,16 @@ export default class CreateBeverage extends Component{
             // <div className="ui grid cards centered columns" >
                 <Router>
                     <Switch>
-                            <Route exact path="/createbev/base">
+                            <Route exact path="/beveragr/createbev/base">
                                 <BeverageBase base={base} setBase={this.setBase} beverageCurrent={this.state} setIced={this.setIced}/>
                             </Route>
-                            <Route exact path="/createbev/creamer" >
+                            <Route exact path="/beveragr/createbev/creamer" >
                                 <Creamer creamer={creamer} setCreamer={this.setCreamer} beverageCurrent={this.state}/>
                             </Route>
-                            <Route exact path="/createbev/addins" >
+                            <Route exact path="/beveragr/createbev/addins" >
                                 <Addin addins={addins} setAddins={this.setAddins} beverageCurrent={this.state}/>
                             </Route>
-                            <Route exact path="/createbev/review" >
+                            <Route exact path="/beveragr/createbev/review" >
                                 <BeverageReview beverageCurrent={this.state} setName={this.setName} setDescription={this.setDescription} handleSubmit={this.handleSubmit} />
                             </Route>
                     </Switch>
