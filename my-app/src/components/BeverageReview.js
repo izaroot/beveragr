@@ -5,7 +5,7 @@ import coffee from '../assets/coffee.png'
 import tea from '../assets/tea.png'
 import icedcoffee from '../assets/icedcoffee.png'
 import icedtea from '../assets/icedtea.png'
-import Menu from '../assets/menu.png'
+//import Menu from '../assets/menu.png'
 
 const imageMap = {
     'coffee' : coffee,

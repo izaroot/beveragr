@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import BeverageBase from './BeverageBase'
 import Creamer from './Creamer'
 import Addin from './Addin'
@@ -7,7 +7,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
   } from "react-router-dom";
 
 export default class CreateBeverage extends Component{

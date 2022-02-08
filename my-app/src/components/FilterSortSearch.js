@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import icecube from '../assets/icecube.svg'
 import notIced from '../assets/not_iced.svg'
 import hot from '../assets/hot.svg'
