@@ -116,7 +116,7 @@ export default class App extends Component{
           <Route path="/createbev">
             <CreateBeverage ingredients={this.state.ingredients} handleNewBeverage={this.handleNewBeverage} />
           </Route>
-          <Route exact path="/#" >
+          <Route exact path="/" >
             <BeveragesContainer beverages={this.state.beverages} user={this.state.user} handleFavButton={this.handleFavButton} />
           </Route>
           <Route exact path="/ambience">
