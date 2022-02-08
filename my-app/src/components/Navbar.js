@@ -96,8 +96,8 @@ export default class Navbar extends Component{
                     <div className="computer only row">
                         <a className="header item">Beveragr</a>
                         <NavLink to="/beveragr" activeClassName="active"><a className="item">Home</a></NavLink>
-                        <NavLink to="/beveragr/createbev/base" activeClassName="active"><a className="item">Create</a></NavLink>
-                        <NavLink to="/beveragr/ambience" activeClassName="active"><a className="item">Ambience</a></NavLink>
+                        <NavLink to="/createbev/base" activeClassName="active"><a className="item">Create</a></NavLink>
+                        <NavLink to="/ambience" activeClassName="active"><a className="item">Ambience</a></NavLink>
                     </div>                    
                 </div>
                 {welcome}       
