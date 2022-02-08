@@ -113,13 +113,13 @@ export default class App extends Component{
       <Router>
         <Navbar user={this.state.user} login={this.handleLogin} logout={this.handleLogout} newUser={this.handeNewUserLogin} />
         <Switch>
-          <Route path="/createbev">
+          <Route path="/beveragr/createbev">
             <CreateBeverage ingredients={this.state.ingredients} handleNewBeverage={this.handleNewBeverage} />
           </Route>
-          <Route exact path="/" >
+          <Route exact path="/beveragr" >
             <BeveragesContainer beverages={this.state.beverages} user={this.state.user} handleFavButton={this.handleFavButton} />
           </Route>
-          <Route exact path="/ambience">
+          <Route exact path="/beveragr/ambience">
             <Ambience />
           </Route>
           <Route>
